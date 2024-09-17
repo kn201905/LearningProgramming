@@ -12,11 +12,11 @@
 とりあえず、一番簡単なのが Javascript であるため、まずはこれを使ってみようと思う。
 
 ## step 0
-まずは、VSCode（Microsoft社製の無料で利用できるエディタです）を準備しましょう。VSCode 以外の好きなエディタがあれば、そちらを使ってくださいね。
+まずは、VS Code（Microsoft社製の無料で利用できるエディタです）を準備しましょう。VSCode 以外の好きなエディタがあれば、そちらを使ってくださいね。
 
-VS Code のインストールの方法については、インターネットにたくさんの記事があるので、「vscode　インストール」で検索してもらえるようお願いします！
+VS Code のインストールの方法については、インターネットにたくさんの記事があるので、ブラウザ（Edge や Chrome など）で「vscode　インストール」を検索してもらえるようお願いします！
 
-![01](https://github.com/user-attachments/assets/cecbc83b-4366-46ba-a611-244b1eda71fd)
+![01](https://github.com/user-attachments/assets/18d746eb-ed14-494b-98b2-8ea01dd0fad4)
 
 ## step 1
 まずは、ブラウザ（Edge とか Chrome など）を利用して、画面に「こんにちは」を表示してみよう。ブラウザで「こんにちは」を表示できる人は、ここを読み飛ばしてくださいね。
