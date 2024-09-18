@@ -77,8 +77,9 @@ document.body.appendChild(ge_title);
 
 ![08](https://github.com/user-attachments/assets/b6264e5d-e4c1-486d-99e2-15b07ac2b5e4)
 
-そして、これを実行してみましょう。  
-実行するには、step 1 でやってみたように `tetris.html` を Chrome にドラッグ＆ドロップしてもいいですし、Chrome の画面がさっきの状態で残っていれば、Chrome の画面を更新して下さい。（Chrome の画面の更新は、下図の赤枠で囲った部分のボタンを押して下さい。）
+貼り付けた後に、<b>「保存」</b> して（Ctrl + S を押して下さい）、そして、これを <b>実行</b> してみましょう。<b>保存を忘れないでくださいね。</b> 
+
+<b>実行するには、step 1 でやってみたように `tetris.html` を Chrome にドラッグ＆ドロップしてもいいですし、Chrome の画面がさっきの状態で残っていれば、Chrome の画面を更新して下さい。（Chrome の画面の更新は、下図の赤枠で囲った部分のボタンを押して下さい。）</b>
 
 ![09](https://github.com/user-attachments/assets/aa198bbb-5ea3-4f64-a391-86f0212dc440)
 
@@ -137,11 +138,18 @@ ctx.fillRect(0, 0, px_width_field, px_height_field);
 上記のプログラムの意味が分かる方は、この step を読み飛ばして下さいね。
 
 VS Code の画面では、以下のようになったと思います。  
-今後、プログラムを追加する、とした場合、`<body><script>` と `</script></body>` の間に、どんどんプログラムを追加していって下さい。
+今後、プログラムを追加する、とした場合、`<body><script>` と `</script></body>` の間に、どんどんプログラムを追加していって下さい。  
+そして、<b>保存（Ctrl + S）をすることを忘れないでください！</b>
 
 ![13](https://github.com/user-attachments/assets/7aa1b7e2-d4d3-4883-9d11-deb6aaf43d41)
 
-まず、javascript の大変便利な機能について解説します。  
+上図のようにした後に、<b>保存</b> して <b>実行</b> してみましょう。  
+そうすると、画面は以下のようになったと思います。
+
+![14](https://github.com/user-attachments/assets/22ffc210-ddf8-4d40-a800-b49a45018cb4)
+
+---
+では、まず javascript の大変便利な機能について解説します。  
 以下のようにすると、`z.A` は 10 を表し、`z.B` は 20 を表すようになります。
 
 ```
@@ -170,5 +178,11 @@ step 2 で説明したように、これだけでは画面に表示されない�
 
 そのため、最初に L23 の `const ctx = e_canvas.getContext('2d');` ようにして、まずは操作するコンテキストに `ctx` という名前を付けておきます。
 
-その後、`ctx` の塗りつぶし情報を黒色に設定し（L24 の `ctx.fillStyle = "black";`）、黒色の四角形（プログラムでは四角形を `rect` ということが多いです）を描画します（L25 の `ctx.fillRect(0, 0, px_width_field, px_height_field);`）。  
+その後、`ctx` の塗りつぶし情報を黒色に設定します（L24 の `ctx.fillStyle = "black";`）。
+
+次に、黒色の四角形を描画します（L25 の `ctx.fillRect(0, 0, px_width_field, px_height_field);`）。（プログラムでは四角形を `rect` ということが多いです）  
 `fillRect` には、「左上の `x 座標` と `y 座標`」と「右下の `x 座標` と `y 座標`」４つの情報を渡します。
+
+ここまで分かれば、画面に黒い四角形が表示された意味が分かると思います！
+
+
