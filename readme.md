@@ -103,6 +103,5 @@ Chrome などのブラウザは、`div` というブロック単位で画面に�
 新しく作った `div` は、そのままじゃ表示されないので、それを画面表示に追加してください、という意味で `document.body.appendChild(ge_title);` とします。
 
 補足しておきますと、`document` は `Chrome などのブラウザ` を表し、`body` は `表示される画面` を表します。  
-つまり、表示される画面に `ge_title` を追加する `document.body.appendChild(ge_title);` を実行するため、画面に「テトリス」と表示されることになります。
-
+そして、`document.body.appendChild(ge_title);` によって、表示される画面に `ge_title` が追加されるため、画面に「テトリス」と表示されることになります。
 
