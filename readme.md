@@ -105,3 +105,50 @@ Chrome などのブラウザは、`div` というブロック単位で画面に�
 補足しておきますと、`document` は `Chrome などのブラウザ` を表し、`body` は `表示される画面` を表します。  
 そして、`document.body.appendChild(ge_title);` によって、表示される画面に `ge_title` が追加されるため、画面に「テトリス」と表示されることになります。
 
+## step 3
+ここでは、テトリスのゲーム画面を表示してみましょう。  
+step 2 のプログラムに以下のコードを追加してみてください。
+
+```
+const g = {
+    Px_Block: 30,
+    
+    PCS_Col: 10,
+    PCS_Row: 20,
+    
+    PCS_Field_Col: 12,
+};
+
+const px_width_field = g.Px_Block * g.PCS_Field_Col;
+const px_height_field = g.Px_Block * (g.PCS_Row + 1);
+
+const e_canvas = document.createElement('canvas');        
+e_canvas.width = px_width_field;
+e_canvas.height = px_height_field;
+document.body.appendChild(e_canvas);
+
+const ctx = e_canvas.getContext('2d');
+ctx.fillStyle = "black";
+ctx.fillRect(0, 0, px_width_field, px_height_field);
+```
+
+上記のプログラムの意味が分かる方は、この step を読み飛ばして下さいね。
+
+VS Code の画面では、以下のようになったと思います。  
+今後、プログラムを追加する、とした場合、`<body><script>` と `</script></body>` の間に、どんどんプログラムを追加していって下さい。
+
+![13](https://github.com/user-attachments/assets/7aa1b7e2-d4d3-4883-9d11-deb6aaf43d41)
+
+まず、javascript の大変便利な機能について解説します。  
+以下のようにすると、`z.A` は 10 を表し、`z.B` は 20 を表すようになります。
+
+```
+const z = { A: 10, B: 20 };
+```
+
+したがって、私達のプログラムでは、`g.Px_Block` は 30 を表すことになります。  
+テトリスの１ブロックのサイズを 30 ピクセルに想定しましたので、このように設定しました。もし、１ブロックのサイズを 40 ピクセルにしたい場合は、`Px_Block: 40` としてください。
+
+ついでに言いますと、テトリスのゲームは、横 10 ブロック、縦 20 ブロックで遊ぶと想定したので、`PCS_Col: 10` `PCS_Row: 20` としました。  
+さらに、後々にちょっと便利なように、ゲーム画面全体の横幅を `PCS_Field_Col: 12` と設定しました。（ゲーム画面全体には、外枠に２つのブロックを含むため、10 + 2 = 12 としました。）
+
