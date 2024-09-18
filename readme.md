@@ -166,23 +166,25 @@ const z = { A: 10, B: 20 };
 
 ここまでの状態で、`px_width_field` には `30 * 12 = 360`（`*` は、プログラムでは掛け算を表します）という値が設定され、`px_height_field` には `30 * (20 + 1) = 630` という値が記録されます。
 
-次に、グラフィックを描画してもらうための部品を作ってもらいます。それが L18 の `document.createElement('canvas');` いう命令になります。  
+---
+次に、グラフィックを描画してもらうための部品を作るために、`const e_canvas= document.createElement('canvas');`（L18）を実行します。  
 ここでは、新しくグラフィック用の部品を作って、それに `e_canvas` という名前を付けています。
 
-`e_canvas` の、縦と横のサイズを L19, 20 の `e_canvas.width = px_width_field;` と `e_canvas.height = px_height_field;` で設定します。
+グラフィック部品 `e_canvas` の横と縦のサイズを、`e_canvas.width = px_width_field;`、`e_canvas.height = px_height_field;`（L19, 20）にて設定します。
 
 step 2 で説明したように、これだけでは画面に表示されないので、画面に表示してもらうように L21 の `document.body.appendChild(e_canvas);` を実行します。
 
-ちょっと疲れてきましたが、せっかく作った `e_canvas` の背景を「黒色」で塗りつぶしてみましょう。  
+---
+ちょっと疲れてきましたが、せっかく作った `e_canvas` を「黒色」で塗りつぶしてみましょう。  
 最初は分かりにくいのですが、グラフィックを操作する場合には、「コンテキスト」というものを通してグラフィックを操作します。  
 
 そのため、最初に L23 の `const ctx = e_canvas.getContext('2d');` ようにして、まずは操作するコンテキストに `ctx` という名前を付けておきます。
 
-その後、`ctx` の塗りつぶし情報を黒色に設定します（L24 の `ctx.fillStyle = "black";`）。
+`ctx.fillStyle = "black";`（L24）で、`ctx` の塗りつぶし情報を黒色に設定します。
 
-次に、黒色の四角形を描画します（L25 の `ctx.fillRect(0, 0, px_width_field, px_height_field);`）。（プログラムでは四角形を `rect` ということが多いです）  
+`ctx.fillRect(0, 0, px_width_field, px_height_field);`（L25）で、黒色の四角形で塗りつぶします。（プログラムでは四角形を `rect` ということが多いです）  
 `fillRect` には、「左上の `x 座標` と `y 座標`」と「右下の `x 座標` と `y 座標`」４つの情報を渡します。
 
-ここまで分かれば、画面に <b>縦長の黒い四角形</b>（横 `px_width_field = 360` ピクセル、縦 `px_height_field = 630` ピクセル）が表示された意味が分かると思います！
+ここまで分かれば、画面に <b>縦長の黒い四角形</b>（横 `px_width_field = 360` ピクセル、縦 `px_height_field = 630` ピクセル）が表示された意味が分かると思いますが、どうでしょうか！？
 
 
