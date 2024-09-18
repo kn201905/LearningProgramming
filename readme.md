@@ -170,5 +170,5 @@ step 2 で説明したように、これだけでは画面に表示されない�
 
 そのため、最初に L23 の `const ctx = e_canvas.getContext('2d');` ようにして、まずは操作するコンテキストに `ctx` という名前を付けておきます。
 
-その後、`ctx` の塗りつぶし情報を黒色に設定し（L24 の `ctx.fillStyle = "black";`）、黒色の四角形を描画します（L25 の `ctx.fillRect(0, 0, px_width_field, px_height_field);`）。  
+その後、`ctx` の塗りつぶし情報を黒色に設定し（L24 の `ctx.fillStyle = "black";`）、黒色の四角形（プログラムでは四角形を `rect` ということが多いです）を描画します（L25 の `ctx.fillRect(0, 0, px_width_field, px_height_field);`）。  
 `fillRect` には、「左上の `x 座標` と `y 座標`」と「右下の `x 座標` と `y 座標`」４つの情報を渡します。
