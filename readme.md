@@ -68,14 +68,14 @@ VS Code をインストールして起動すると、以下のような画面に
 この step では、下のプログラムを利用して、「テトリス」という文字を表示してみましょう。下のプログラムの意味が分かる人は、この step を読み飛ばして下さいね。
 
 ```
-const ge_title = document.createElement('div');
-ge_title.textContent = "テトリス";
-document.body.appendChild(ge_title);
+const divTitle = document.createElement('div');
+divTitle.textContent = "テトリス";
+document.body.appendChild(divTitle);
 ```
 
 上のプログラムを、「tetris.html」に貼り付けてみましょう。
 
-![08](https://github.com/user-attachments/assets/b6264e5d-e4c1-486d-99e2-15b07ac2b5e4)
+![01](https://github.com/user-attachments/assets/72181c5f-4554-4553-a06d-60942c237322)
 
 貼り付けた後に、<b>「保存」</b> して（Ctrl + S を押して下さい）、そして、これを <b>実行</b> してみましょう。<b>保存を忘れないでくださいね。</b> 
 
@@ -88,9 +88,9 @@ document.body.appendChild(ge_title);
 ![10](https://github.com/user-attachments/assets/213798d5-9263-4aee-a72f-975b1c2b20ee)
 
 `tetris.html` の内容が、そのまま表示されました。これは、`tetris.html` の内容がプログラムと認識されなかったためです。  
-プログラムと認識させる一番簡単な方法が、プログラムを以下のように `<body><script>` と `</body></script>` で囲むことです。
+プログラムと認識させる一番簡単な方法が、プログラムを以下のように `<body><script>` と `</script></body>` で囲むことです。
 
-![11](https://github.com/user-attachments/assets/62b961ac-0de6-4336-9694-d509383ba0da)
+![02](https://github.com/user-attachments/assets/a41534b3-7553-4018-9978-53d25d3cd424)
 
 この状態で、プログラムを実行すると、下図のように「テトリス」と表示されるでしょう。
 
