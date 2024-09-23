@@ -187,22 +187,21 @@ const z = { A: 10, B: 20 };
 `canvasField.height = pxHeightField;` は、`canvasField の縦幅 を pxHeightField にする` という意味にまります。
 
 * L22  
-`document.body.appendChild(canvasField);` は、step 2 で説明したように、`canvasField` を画面に表示追加しています。
+`document.body.appendChild(canvasField);` は、step 2 で説明したように、画面表示に `canvasField` を追加します。
 
 ---
 ちょっと疲れてきましたが、せっかく作った `canvasField` を「黒色」で塗りつぶしてみましょう。  
 最初は分かりにくいのですが、グラフィックを描く場合には、「コンテキスト」というものを通してグラフィックを描画します。
 
 * L24  
-最初に、const ctx = canvasField.getContext('2d'); として、`canvasField` のコンテキストに、`ctx` という名前を付けておきます。
+最初に、`const ctx = canvasField.getContext('2d');` として、`canvasField` のコンテキストに、`ctx` という名前を付けておきます。
 
 * L25  
 `ctx.fillStyle = "black";` として、`ctx（= canvasField のコンテキスト）` の塗りつぶし情報を黒色に設定します。
 
 * L26  
 `ctx.fillRect(0, 0, px_width_field, px_height_field);` は、`ctx` のグラフィック画面（`canvasField` のグラフィック画面）に黒色の四角形を描画します。  
-（プログラムでは四角形を `rect` ということが多いです）
-
+（プログラムでは四角形を `rect` ということが多いです）<br><br>
 `fillRect` には、「左上の `x 座標` と `y 座標`」と「右下の `x 座標` と `y 座標`」４つの情報を渡します。
 
 ここまで分かれば、画面に <b>縦長の黒い四角形</b>（横 `px_width_field = 360` ピクセル、縦 `px_height_field = 630` ピクセル）が表示された意味が分かると思いますが、どうでしょうか！？
