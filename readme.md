@@ -96,17 +96,24 @@ document.body.appendChild(divTitle);
 
 ![12](https://github.com/user-attachments/assets/4b7cd304-6d72-423c-bb3b-26ecc0539743)
 
-さて、少しだけプログラムの解説をしてみましょう。  
+さて、上記のプログラムの意味を考えてみましょう。
+
+* L2（２行目）  
 Chrome などのブラウザは、`div` というブロック単位で画面に表示を行います。  
-そのため、最初に `document.createElement('div');` で、新しく `div` を作り、その `div` に `ge_title` という名前を付けています。  
-<b>プログラムの中で作ったものに名前を付ける場合、`const` という命令を使うんだな</b>、って今は考えてもらえば大丈夫です。
+`document.createElement('div');` で、<b>新しく `div` を作り、新しく作った `div` に `divTitle` という名前を付けています</b>。
+プログラムの中で `=` は、数学で使われるのと同じように `代入` という意味で使われることが多いです。
 
-そして、新しく作った `div` に「テトリス」というテキスト情報（文字列情報）を `ge_title.textContent = "テトリス";` で与えます。
+<b>`const x = ...`</b> とあったら、<b>`...` の内容を `x` に代入する</b>、とか、<b>`...` の内容に `x` という名前を付けた</b>、と考えてください。
 
-新しく作った `div` は、そのままじゃ表示されないので、それを画面表示に追加してください、という意味で `document.body.appendChild(ge_title);` とします。
+* L3
+さきほど作った `divTitle` に、「テトリス」という文字を記憶させます。  
+`divTitle.textContent = "テトリス";` は、`divTitle の 文字情報 = "テトリス"` と読んでください。
 
-補足しておきますと、`document` は `Chrome などのブラウザ` を表し、`body` は `表示される画面` を表します。  
-そして、`document.body.appendChild(ge_title);` によって、表示される画面に `ge_title` が追加されるため、画面に「テトリス」と表示されることになります。
+* L4
+新しく作った `div` は、そのままじゃ表示されないので、それを画面に追加するために `document.body.appendChild(divTitle);` とします。
+
+`document` は `Chrome などのブラウザ` を表し、`body` は `表示される画面` を表します。  
+そして、`document.body.appendChild(divTitle);` によって、表示される画面に `divTitle` が追加されるため、画面に「テトリス」と表示されることになります。
 
 ## step 3
 ここでは、テトリスのゲーム画面を表示してみましょう。  
@@ -114,25 +121,26 @@ step 2 のプログラムに以下のコードを追加してみてください�
 
 ```
 const g = {
-    Px_Block: 30,
+    pxBlock: 30,
     
-    PCS_Col: 10,
-    PCS_Row: 20,
+    pcsCol: 10,
+    pcsRow: 20,
     
-    PCS_Field_Col: 12,
+    pcsFieldCol: 12,
+    pcsFieldRow: 21,
 };
 
-const px_width_field = g.Px_Block * g.PCS_Field_Col;
-const px_height_field = g.Px_Block * (g.PCS_Row + 1);
+const pxWidthField = g.pxBlock * g.pcsFieldCol;
+const pxHeightField = g.pxBlock * g.pcsFieldRow;
 
-const e_canvas = document.createElement('canvas');        
-e_canvas.width = px_width_field;
-e_canvas.height = px_height_field;
-document.body.appendChild(e_canvas);
+const canvasField = document.createElement('canvas');        
+canvasField.width = pxWidthField;
+canvasField.height = pxHeightField;
+document.body.appendChild(canvasField);
 
-const ctx = e_canvas.getContext('2d');
+const ctx = canvasField.getContext('2d');
 ctx.fillStyle = "black";
-ctx.fillRect(0, 0, px_width_field, px_height_field);
+ctx.fillRect(0, 0, pxWidthField, pxHeightField);
 ```
 
 上記のプログラムの意味が分かる方は、この step を読み飛ばして下さいね。
@@ -141,7 +149,7 @@ VS Code の画面では、以下のようになったと思います。
 今後、プログラムを追加する、とした場合、`<body><script>` と `</script></body>` の間に、どんどんプログラムを追加していって下さい。  
 そして、<b>保存（Ctrl + S）をすることを忘れないでください！</b>
 
-![13](https://github.com/user-attachments/assets/7aa1b7e2-d4d3-4883-9d11-deb6aaf43d41)
+![03](https://github.com/user-attachments/assets/dd7d9245-90c9-4740-ba0f-bc6ed705800e)
 
 上図のようにした後に、<b>保存</b> して <b>実行</b> してみましょう。  
 そうすると、画面は以下のようになったと思います。
@@ -149,40 +157,52 @@ VS Code の画面では、以下のようになったと思います。
 ![14](https://github.com/user-attachments/assets/22ffc210-ddf8-4d40-a800-b49a45018cb4)
 
 ---
-では、まず javascript の大変便利な機能について解説します。  
-以下のようにすると、`z.A` は 10 を表し、`z.B` は 20 を表すようになります。
+* L6 - 14（6行目から 14行目）  
+javascript では、以下のようにすると、`z.A` は 10 を表し、`z.B` は 20 を表すようになります。
 
 ```
 const z = { A: 10, B: 20 };
 ```
 
-したがって、私達のプログラムでは、`g.Px_Block` は 30 を表すことになります。  
-テトリスの１ブロックのサイズを 30 ピクセルに想定しましたので、このように設定しました。もし、１ブロックのサイズを 40 ピクセルにしたい場合は、`Px_Block: 40` としてください。
+したがって、私達のプログラムでは、`g.pxBlock` は 30 を表すことになります。  
+テトリスの１ブロックのサイズを 30 ピクセルに想定しましたので、このように設定しました。もし、１ブロックのサイズを 40 ピクセルにしたい場合は、`pxBlock: 40` と自由に変更してみてください。
 
-ついでに言いますと、テトリスのゲームは、横 10 ブロック、縦 20 ブロックで遊ぶと想定したので、`PCS_Col: 10` `PCS_Row: 20` としました。  
-さらに、後々にちょっと便利なように、ゲーム画面全体の横幅を `PCS_Field_Col: 12` と設定しました。（ゲーム画面全体には、外枠に２つのブロックを含むため、10 + 2 = 12 としました。）
+次に、テトリスのゲームは、横 10 ブロック、縦 20 ブロックで遊ぶと想定したので、`pcsCol: 10` `pcsRow: 20` としました。  
+（`pcs` = `pieces` (個数)、`col` = `column`（列）という意味で使っています。）
 
-次に、L15（15行目）と L16 で、画面全体の縦と横のピクセル数に名前を付けています。縦方向には、一番下に外枠のブロックがあるため、`g.PCS_Row + 1` としています。
+さらに、ゲーム画面全体の横要綱と縦方向のブロック数を `pcsFieldCol: 12`、`pcsFieldRow: 21` と設定しました。  
+（ゲーム画面には、横方向に外枠の２つのブロックがあり、一番下側に外枠のブロックが１つある、と考えています。）
 
-ここまでの状態で、`px_width_field` には `30 * 12 = 360`（`*` は、プログラムでは掛け算を表します）という値が設定され、`px_height_field` には `30 * (20 + 1) = 630` という値が記録されます。
+* L16、17  
+画面全体の横と縦のピクセル数に名前を付けています。  
+`pxWidthField` は `30 * 12 = 360` の値が設定され、`pxHeightField` は `30 * 21 = 630` の値が設定れます。  
+（プログラムでは、掛け算を `*` で表します。）
+
+* L19  
+赤色の四角形や、黄色の四角形などのグラフィックは、`canvas` という部品を使って描きます。  
+そのため、`const canvasField = document.createElement('canvas');` として、新しく `canvas` を作り、それに `canvasField` という名前を付けています。
+
+* L20、21  
+`canvasField.width = pxWidthField;` は、`canvasField の横幅 を pxWidthField にする` という意味で、  
+`canvasField.height = pxHeightField;` は、`canvasField の縦幅 を pxHeightField にする` という意味にまります。
+
+* L22  
+`document.body.appendChild(canvasField);` は、step 2 で説明したように、`canvasField` を画面に表示追加しています。
 
 ---
-次に、グラフィックを描画してもらうための部品を作るために、`const e_canvas= document.createElement('canvas');`（L18）を実行します。  
-ここでは、新しくグラフィック用の部品を作って、それに `e_canvas` という名前を付けています。
+ちょっと疲れてきましたが、せっかく作った `canvasField` を「黒色」で塗りつぶしてみましょう。  
+最初は分かりにくいのですが、グラフィックを描く場合には、「コンテキスト」というものを通してグラフィックを描画します。
 
-グラフィック部品 `e_canvas` の横と縦のサイズを、`e_canvas.width = px_width_field;`、`e_canvas.height = px_height_field;`（L19, 20）にて設定します。
+* L24  
+最初に、const ctx = canvasField.getContext('2d'); として、`canvasField` のコンテキストに、`ctx` という名前を付けておきます。
 
-step 2 で説明したように、これだけでは画面に表示されないので、画面に表示してもらうように L21 の `document.body.appendChild(e_canvas);` を実行します。
+* L25  
+`ctx.fillStyle = "black";` として、`ctx（= canvasField のコンテキスト）` の塗りつぶし情報を黒色に設定します。
 
----
-ちょっと疲れてきましたが、せっかく作った `e_canvas` を「黒色」で塗りつぶしてみましょう。  
-最初は分かりにくいのですが、グラフィックを操作する場合には、「コンテキスト」というものを通してグラフィックを操作します。  
+* L26  
+`ctx.fillRect(0, 0, px_width_field, px_height_field);` は、`ctx` のグラフィック画面（`canvasField` のグラフィック画面）に黒色の四角形を描画します。  
+（プログラムでは四角形を `rect` ということが多いです）
 
-そのため、最初に `const ctx = e_canvas.getContext('2d');`（L23）のようにして、まずは操作するコンテキストに `ctx` という名前を付けておきます。
-
-`ctx.fillStyle = "black";`（L24）で、`ctx` の塗りつぶし情報を黒色に設定します。
-
-`ctx.fillRect(0, 0, px_width_field, px_height_field);`（L25）で、黒色の四角形で塗りつぶします。（プログラムでは四角形を `rect` ということが多いです）  
 `fillRect` には、「左上の `x 座標` と `y 座標`」と「右下の `x 座標` と `y 座標`」４つの情報を渡します。
 
 ここまで分かれば、画面に <b>縦長の黒い四角形</b>（横 `px_width_field = 360` ピクセル、縦 `px_height_field = 630` ピクセル）が表示された意味が分かると思いますが、どうでしょうか！？
